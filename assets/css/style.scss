@@ -1,0 +1,100 @@
+@use "sass:color"; // Añadimos el módulo color
+
+$bg-color: #f0f0f0;
+$primary-color: #4CAF50;
+$white: #ffffff;
+$font-color: #333;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $bg-color;
+  color: $font-color;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px $shadow-color;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  input[type="text"] {
+    padding: 0.75rem;
+    border: 1px solid color.scale($primary-color, $lightness: 20%);
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 0.75rem;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.scale($primary-color, $lightness: -10%);
+    }
+  }
+
+  #resultados {
+    display: grid;
+    gap: 0.5rem;
+
+    p {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Estilos responsivos */
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    input[type="text"], 
+    button {
+      grid-column: 1 / -1;
+    }
+
+    #resultados {
+      grid-column: 1 / -1;
+    }
+  }
+}
